@@ -1,0 +1,148 @@
+<div class="container fade-in-up">
+  <!-- Modern Page Header -->
+  <div class="page-header d-flex justify-content-between align-items-center">
+    <h2><i class="bi bi-tag me-2"></i>{{ isEditMode ? 'Kategori Düzenle' : 'Yeni Kategori' }}</h2>
+    <button type="button" class="btn btn-secondary-custom" [routerLink]="['/categories']">
+      <i class="bi bi-arrow-left me-2"></i>Geri Dön
+    </button>
+  </div>
+
+  <!-- Modern Loading Section -->
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border spinner-border-lg" role="status">
+      <span class="visually-hidden">Yükleniyor...</span>
+    </div>
+    <p class="mt-3 text-muted">{{ isEditMode ? 'Kategori bilgileri yükleniyor...' : 'İşleminiz gerçekleştiriliyor...' }}</p>
+  </div>
+
+  <!-- Modern Error Alert -->
+  <div *ngIf="error" class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+  </div>
+
+  <!-- Modern Form Section -->
+  <div class="form-section" *ngIf="!loading">
+    <div class="card glassmorphism">
+      <div class="card-body">
+        <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+          <!-- Category ID Section -->
+          <div class="form-group">
+            <label for="category_id" class="form-label">
+              <i class="bi bi-hash me-2"></i>Kategori ID
+            </label>
+            <div class="input-wrapper">
+              <input type="number"
+                     class="form-control"
+                     id="category_id"
+                     formControlName="category_id"
+                     [readOnly]="isEditMode"
+                     [ngClass]="{ 'is-invalid': submitted && f['category_id'] && f['category_id'].errors, 'readonly-field': isEditMode }"
+                     placeholder="Kategori ID girin">
+              <div *ngIf="submitted && f['category_id'] && f['category_id'].errors" class="invalid-feedback">
+                <div *ngIf="f['category_id'].errors && f['category_id'].errors['required']">
+                  <i class="bi bi-exclamation-circle me-1"></i>Kategori ID zorunludur
+                </div>
+                <div *ngIf="f['category_id'].errors && f['category_id'].errors['min']">
+                  <i class="bi bi-exclamation-circle me-1"></i>Kategori ID 1'den küçük olamaz
+                </div>
+              </div>
+              <br />
+              <small *ngIf="isEditMode" class="form-text text-muted">
+                <i class="bi bi-info-circle me-1"></i>ID değeri güncellenemez
+              </small>
+            </div>
+          </div>
+
+          <!-- Category Name Section -->
+          <div class="form-group">
+            <label for="name" class="form-label">
+              <i class="bi bi-tags me-2"></i>Kategori Adı
+            </label>
+            <div class="input-wrapper">
+              <input type="text"
+                     class="form-control"
+                     id="name"
+                     formControlName="name"
+                     [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+                     placeholder="Kategori adını girin (örn: Action, Comedy, Drama)">
+              <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="f['name'].errors['required']">
+                  <i class="bi bi-exclamation-circle me-1"></i>Kategori adı zorunludur
+                </div>
+                <div *ngIf="f['name'].errors['maxlength']">
+                  <i class="bi bi-exclamation-circle me-1"></i>Kategori adı 25 karakterden uzun olamaz
+                </div>
+              </div>
+              <br />
+              <small class="form-text text-info">
+                <i class="bi bi-lightbulb me-1"></i>
+                Kategori adı filmler için sınıflandırma amaçlı kullanılır
+              </small>
+            </div>
+          </div>
+
+          <!-- Preview Section -->
+          <div class="form-group" *ngIf="categoryForm.get('name')?.value">
+            <label class="form-label">
+              <i class="bi bi-eye me-2"></i>Önizleme
+            </label>
+            <div class="preview-card">
+              <div class="d-flex align-items-center">
+                <div class="category-icon me-3">
+                  <i class="bi bi-tag-fill"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0 text-primary">
+                    {{ categoryForm.get('name')?.value }}
+                  </h6>
+                  <small class="text-muted">
+                    <i class="bi bi-collection me-1"></i>
+                    Film Kategorisi
+                  </small>
+                </div>
+              </div>
+              <div class="mt-3">
+                <span class="category-badge">
+                  {{ categoryForm.get('name')?.value }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Character Counter -->
+          <div class="form-group" *ngIf="categoryForm.get('name')?.value">
+            <div class="character-counter">
+              <small class="text-muted">
+                <i class="bi bi-type me-1"></i>
+                {{ categoryForm.get('name')?.value?.length || 0 }}/25 karakter
+                <span class="ms-2" [ngClass]="{
+                      'text-success' : (categoryForm.get('name')?.value?.length || 0) <= 20,
+                  'text-warning': (categoryForm.get('name')?.value?.length || 0) > 20 && (categoryForm.get('name')?.value?.length || 0) <= 23,
+                  'text-danger': (categoryForm.get('name')?.value?.length || 0) > 23
+                }">
+                  <i class="bi" [ngClass]="{
+                    'bi-check-circle': (categoryForm.get('name')?.value?.length || 0) <= 20,
+                    'bi-exclamation-triangle': (categoryForm.get('name')?.value?.length || 0) > 20 && (categoryForm.get('name')?.value?.length || 0) <= 23,
+                    'bi-x-circle': (categoryForm.get('name')?.value?.length || 0) > 23
+                  }"></i>
+                </span>
+              </small>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons d-flex gap-3 justify-content-end">
+            <button type="button" class="btn btn-secondary-custom" [routerLink]="['/categories']" [disabled]="loading">
+              <i class="bi bi-x-circle me-2"></i>İptal
+            </button>
+            <button type="submit" class="btn btn-primary-custom" [disabled]="loading || categoryForm.invalid">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+              <i *ngIf="!loading" [class]="isEditMode ? 'bi bi-check-circle me-2' : 'bi bi-plus-circle me-2'"></i>
+              {{ isEditMode ? 'Güncelle' : 'Kaydet' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

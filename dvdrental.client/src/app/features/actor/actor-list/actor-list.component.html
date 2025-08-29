@@ -1,0 +1,222 @@
+<div class="container fade-in-up">
+  <!-- Modern Page Header -->
+  <div class="page-header d-flex justify-content-between align-items-center">
+    <h2><i class="bi bi-people me-2"></i>Aktörler</h2>
+    <button class="btn btn-primary" (click)="createActor()">
+      <i class="bi bi-person-plus me-2"></i>Yeni Aktör
+    </button>
+  </div>
+
+  <!-- Modern Search Section -->
+  <div class="search-section">
+    <div class="card glassmorphism">
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label for="searchField" class="form-label">
+              <i class="bi bi-funnel me-2"></i>Arama Alanı
+            </label>
+            <select id="searchField" class="form-select"
+                    [(ngModel)]="selectedSearchField"
+                    (change)="onSearchFieldChange()">
+              <option *ngFor="let field of searchFields" [value]="field.value">
+                {{ field.label }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="searchInput" class="form-label">
+              <i class="bi bi-search me-2"></i>Arama Terimi
+            </label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="bi bi-search"></i>
+              </span>
+              <input type="text"
+                     id="searchInput"
+                     class="form-control"
+                     placeholder="Aktör ara..."
+                     [(ngModel)]="searchTerm"
+                     (input)="onSearchChange()"
+                     [disabled]="loading">
+              <button class="btn btn-outline-secondary"
+                      type="button"
+                      (click)="clearSearch()"
+                      [disabled]="!isSearchActive"
+                      title="Aramayı Temizle">
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-2 d-flex align-items-end">
+            <div class="text-primary fw-bold small" *ngIf="isSearchActive">
+              <i class="bi bi-check-circle me-1"></i>{{ totalItems }} sonuç
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border spinner-border-lg" role="status">
+      <span class="visually-hidden">Yükleniyor...</span>
+    </div>
+    <p class="mt-3 text-muted">Aktörler yükleniyor...</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error">
+    <!-- Modern Pagination Info -->
+    <div class="pagination-info d-flex justify-content-between align-items-center" *ngIf="totalItems > 0">
+      <div class="text-muted">
+        <i class="bi bi-info-circle me-2"></i>
+        <strong>{{ startItem }} - {{ endItem }}</strong> / {{ totalItems }} aktör gösteriliyor
+        <span *ngIf="isSearchActive" class="text-primary ms-2">
+          <i class="bi bi-filter me-1"></i>({{ allActors.length }} aktörden filtrelendi)
+        </span>
+      </div>
+      <div class="d-flex align-items-center">
+        <label for="pageSize" class="form-label me-2 mb-0 text-muted fw-bold">
+          <i class="bi bi-grid-3x3-gap me-1"></i>Sayfa başına:
+        </label>
+        <select id="pageSize" class="form-select form-select-sm" style="width: auto;"
+                [value]="pageSize" (change)="changePageSize(+$any($event.target).value)">
+          <option [value]="10">10</option>
+          <option [value]="20">20</option>
+          <option [value]="50">50</option>
+          <option [value]="100">100</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Modern No Results -->
+    <div *ngIf="totalItems === 0 && isSearchActive" class="alert alert-warning">
+      <i class="bi bi-search me-2"></i>
+      <strong>"{{ searchTerm }}"</strong> araması için sonuç bulunamadı.
+      <button class="btn btn-link p-0 ms-2 fw-bold" (click)="clearSearch()">
+        <i class="bi bi-arrow-clockwise me-1"></i>Aramayı temizle
+      </button>
+    </div>
+
+    <div *ngIf="actors.length === 0 && totalItems === 0 && !isSearchActive" class="alert alert-info">
+      <i class="bi bi-info-circle me-2"></i>Kayıtlı aktör bulunmamaktadır.
+      <button class="btn btn-link p-0 ms-2 fw-bold" (click)="createActor()">
+        <i class="bi bi-person-plus me-1"></i>İlk aktörü oluştur
+      </button>
+    </div>
+
+    <!-- Modern Actors Table -->
+    <div class="table-responsive" *ngIf="actors.length > 0">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th><i class="bi bi-hash me-2"></i>ID</th>
+            <th><i class="bi bi-person-badge me-2"></i>Ad</th>
+            <th><i class="bi bi-person-badge-fill me-2"></i>Soyad</th>
+            <th><i class="bi bi-person-circle me-2"></i>Ad Soyad</th>
+            <th><i class="bi bi-clock me-2"></i>Son Güncelleme</th>
+            <th><i class="bi bi-gear me-2"></i>İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let actor of actors; let i = index">
+            <td>
+              <span class="badge bg-success rounded-pill">{{ actor.actor_id }}</span>
+            </td>
+            <td>
+              <span class="fw-semibold" [innerHTML]="highlightSearchTerm(actor.first_name, searchTerm)"></span>
+            </td>
+            <td>
+              <span class="fw-semibold" [innerHTML]="highlightSearchTerm(actor.last_name, searchTerm)"></span>
+            </td>
+            <td>
+              <div class="d-flex align-items-center">
+                <div class="avatar-circle me-2">
+                  {{ actor.first_name.charAt(0) }}{{ actor.last_name.charAt(0) }}
+                </div>
+                <span class="text-primary fw-bold">
+                  {{ actor.first_name }} {{ actor.last_name }}
+                </span>
+              </div>
+            </td>
+            <td>
+              <small class="text-muted">
+                <i class="bi bi-calendar3 me-1"></i>
+                {{ actor.last_update | date:'short':'tr-TR' }}
+              </small>
+            </td>
+            <td>
+              <div class="btn-group btn-group-sm" role="group">
+                <button class="btn btn-outline-primary"
+                        (click)="editActor(actor.actor_id)"
+                        title="Aktör Düzenle">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-danger"
+                        (click)="deleteActor(actor.actor_id)"
+                        title="Aktör Sil">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modern Pagination Controls -->
+    <nav aria-label="Aktör sayfalama" *ngIf="totalPages > 1">
+      <ul class="pagination">
+        <!-- First Page -->
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="goToFirstPage()" [disabled]="currentPage === 1">
+            <i class="bi bi-chevron-double-left"></i>
+          </button>
+        </li>
+
+        <!-- Previous Page -->
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="goToPreviousPage()" [disabled]="currentPage === 1">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+        </li>
+
+        <!-- Page Numbers -->
+        <li class="page-item"
+            *ngFor="let page of pages"
+            [class.active]="page === currentPage">
+          <button class="page-link" (click)="goToPage(page)">
+            {{ page }}
+          </button>
+        </li>
+
+        <!-- Next Page -->
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <button class="page-link" (click)="goToNextPage()" [disabled]="currentPage === totalPages">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </li>
+
+        <!-- Last Page -->
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <button class="page-link" (click)="goToLastPage()" [disabled]="currentPage === totalPages">
+            <i class="bi bi-chevron-double-right"></i>
+          </button>
+        </li>
+      </ul>
+
+      <!-- Modern Page info -->
+      <div class="text-center mt-3">
+        <small class="text-muted fw-bold">
+          <i class="bi bi-files me-1"></i>
+          Sayfa <span class="text-primary">{{ currentPage }}</span> /
+          <span class="text-primary">{{ totalPages }}</span>
+        </small>
+      </div>
+    </nav>
+  </div>
+</div>

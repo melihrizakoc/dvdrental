@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "DvdRental.Server\\DvdRental.Server.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "dvdrental.client\\dvdrental.client.esproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

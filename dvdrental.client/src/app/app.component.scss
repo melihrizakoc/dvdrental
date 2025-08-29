@@ -1,0 +1,151 @@
+/* Navbar stilleri */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  color: #fff !important;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #f8f9fa !important;
+  transform: scale(1.05);
+}
+
+/* Logo stileri */
+.navbar-brand svg {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover svg {
+  transform: rotate(45deg);
+}
+
+.nav-link.active {
+  color: #fff !important;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  position: relative;
+}
+
+.nav-link.active:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+}
+
+.nav-link:hover {
+  color: #f8f9fa !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+/* Footer stilleri */
+footer {
+  position: relative;
+  margin-top: 50px;
+}
+
+/* Responsive ayarlamalar */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .navbar-brand span {
+    font-size: 1rem;
+  }
+
+  .navbar-brand svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Navbar collapse animation */
+.navbar-collapse {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Custom hamburger icon */
+.navbar-toggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+  top: -8px;
+}
+
+.navbar-toggler-icon::after {
+  top: 8px;
+}
+
+/* Animation when toggled */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  background-color: transparent;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Mobile menu improvements */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .nav-item {
+    margin: 0.5rem 0;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem !important;
+    border-radius: 8px !important;
+    margin: 0.25rem 0;
+  }
+}

@@ -1,0 +1,406 @@
+// Modern container with red gradient background
+.container {
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+  min-height: calc(100vh - 100px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+// Modern header styling with film-specific red gradient
+.page-header {
+  background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+
+  h2 {
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-primary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// Modern search section
+.search-section {
+  margin-bottom: 2rem;
+
+  .card {
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    .card-body {
+      padding: 2rem;
+    }
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-select,
+  .form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+
+    &:focus {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 0.25rem rgba(239, 68, 68, 0.15);
+      background: white;
+    }
+  }
+
+  .input-group-text {
+    background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+    border: none;
+    color: white;
+    border-radius: 10px 0 0 10px;
+    font-size: 1.1rem;
+  }
+
+  .btn-outline-secondary {
+    border-color: #dee2e6;
+    border-radius: 0 10px 10px 0;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #f8f9fa;
+      border-color: #adb5bd;
+    }
+  }
+}
+
+// Modern table styling
+.table-responsive {
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 2rem;
+}
+
+.table {
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  thead {
+    &.table-dark {
+      background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+
+      th {
+        border: none;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        padding: 1.25rem 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+      }
+
+      td {
+        padding: 1.25rem 1rem;
+        border-color: #f1f3f4;
+        font-size: 0.95rem;
+        vertical-align: middle;
+
+        &:first-child {
+          font-weight: 600;
+          color: #dc2626;
+        }
+      }
+    }
+  }
+}
+
+// Film-specific elements
+.film-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+  color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
+}
+
+.year-badge {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(251, 191, 36, 0.3);
+}
+
+.duration-text {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.rating-badge {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+}
+
+.price-text {
+  font-size: 1rem;
+}
+
+// Modern buttons in table
+.btn-group-sm .btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin: 0 0.125rem;
+
+  &.btn-outline-primary {
+    border-color: #ef4444;
+    color: #ef4444;
+
+    &:hover {
+      background: #ef4444;
+      border-color: #ef4444;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+  }
+
+  &.btn-outline-danger {
+    border-color: #dc2626;
+    color: #dc2626;
+
+    &:hover {
+      background: #dc2626;
+      border-color: #dc2626;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    }
+  }
+}
+
+// Modern pagination
+.pagination {
+  justify-content: center;
+  margin-top: 2rem;
+
+  .page-link {
+    border: none;
+    border-radius: 10px;
+    margin: 0 0.25rem;
+    padding: 0.75rem 1rem;
+    color: #dc2626;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+    }
+  }
+
+  .page-item.active .page-link {
+    background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+    color: white;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .page-item.disabled .page-link {
+    color: #adb5bd;
+    background: rgba(248, 249, 250, 0.6);
+    box-shadow: none;
+  }
+}
+
+// Modern info cards
+.pagination-info {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// Modern alerts
+.alert {
+  border: none;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+
+  &.alert-info {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    color: #1d4ed8;
+    border-left: 4px solid #3b82f6;
+  }
+
+  &.alert-warning {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    color: #d97706;
+    border-left: 4px solid #f59e0b;
+  }
+
+  &.alert-danger {
+    background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+    color: #dc2626;
+    border-left: 4px solid #ef4444;
+  }
+}
+
+// Search highlight with film-specific red styling
+.search-highlight {
+  background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #dc2626;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+// Modern loading spinner
+.spinner-border {
+  color: #ef4444;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .page-header {
+    padding: 1.5rem;
+    text-align: center;
+
+    .d-flex {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+
+  .search-section .card .card-body {
+    padding: 1.5rem;
+  }
+
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.25rem;
+  }
+
+  .pagination {
+    .page-link {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      margin: 0 0.125rem;
+    }
+  }
+
+  .film-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+  }
+
+  .year-badge,
+  .rating-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+// Modern glassmorphism effect
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+// Animation keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}

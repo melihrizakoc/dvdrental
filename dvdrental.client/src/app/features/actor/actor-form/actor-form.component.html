@@ -1,0 +1,144 @@
+<div class="container fade-in-up">
+  <!-- Modern Page Header -->
+  <div class="page-header d-flex justify-content-between align-items-center">
+    <h2><i class="bi bi-person-circle me-2"></i>{{ isEditMode ? 'Aktör Düzenle' : 'Yeni Aktör' }}</h2>
+    <button type="button" class="btn btn-secondary-custom" [routerLink]="['/actors']">
+      <i class="bi bi-arrow-left me-2"></i>Geri Dön
+    </button>
+  </div>
+
+  <!-- Modern Loading Section -->
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border spinner-border-lg" role="status">
+      <span class="visually-hidden">Yükleniyor...</span>
+    </div>
+    <p class="mt-3 text-muted">{{ isEditMode ? 'Aktör bilgileri yükleniyor...' : 'İşleminiz gerçekleştiriliyor...' }}</p>
+  </div>
+
+  <!-- Modern Error Alert -->
+  <div *ngIf="error" class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+  </div>
+
+  <!-- Modern Form Section -->
+  <div class="form-section" *ngIf="!loading">
+    <div class="card glassmorphism">
+      <div class="card-body">
+        <form [formGroup]="actorForm" (ngSubmit)="onSubmit()">
+          <!-- Actor ID Section -->
+          <div class="form-group">
+            <label for="actor_id" class="form-label">
+              <i class="bi bi-hash me-2"></i>Aktör ID
+            </label>
+            <div class="input-wrapper">
+              <input type="number"
+                     class="form-control"
+                     id="actor_id"
+                     formControlName="actor_id"
+                     [readOnly]="isEditMode"
+                     [ngClass]="{ 'is-invalid': submitted && f['actor_id'] && f['actor_id'].errors, 'readonly-field': isEditMode }"
+                     placeholder="Aktör ID girin">
+              <div *ngIf="submitted && f['actor_id'] && f['actor_id'].errors" class="invalid-feedback">
+                <div *ngIf="f['actor_id'].errors && f['actor_id'].errors['required']">
+                  <i class="bi bi-exclamation-circle me-1"></i>Aktör ID zorunludur
+                </div>
+                <div *ngIf="f['actor_id'].errors && f['actor_id'].errors['min']">
+                  <i class="bi bi-exclamation-circle me-1"></i>Aktör ID 1'den küçük olamaz
+                </div>
+              </div>
+              <br />
+              <small *ngIf="isEditMode" class="form-text text-muted">
+                <i class="bi bi-info-circle me-1"></i>ID değeri güncellenemez
+              </small>
+            </div>
+          </div>
+
+          <!-- Name Fields Row -->
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="first_name" class="form-label">
+                  <i class="bi bi-person me-2"></i>Ad
+                </label>
+                <div class="input-wrapper">
+                  <input type="text"
+                         class="form-control"
+                         id="first_name"
+                         formControlName="first_name"
+                         [ngClass]="{ 'is-invalid': submitted && f['first_name'].errors }"
+                         placeholder="Aktörün adını girin">
+                  <div *ngIf="submitted && f['first_name'].errors" class="invalid-feedback">
+                    <div *ngIf="f['first_name'].errors['required']">
+                      <i class="bi bi-exclamation-circle me-1"></i>Ad alanı zorunludur
+                    </div>
+                    <div *ngIf="f['first_name'].errors['maxlength']">
+                      <i class="bi bi-exclamation-circle me-1"></i>Ad 45 karakterden uzun olamaz
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="last_name" class="form-label">
+                  <i class="bi bi-person-fill me-2"></i>Soyad
+                </label>
+                <div class="input-wrapper">
+                  <input type="text"
+                         class="form-control"
+                         id="last_name"
+                         formControlName="last_name"
+                         [ngClass]="{ 'is-invalid': submitted && f['last_name'].errors }"
+                         placeholder="Aktörün soyadını girin">
+                  <div *ngIf="submitted && f['last_name'].errors" class="invalid-feedback">
+                    <div *ngIf="f['last_name'].errors['required']">
+                      <i class="bi bi-exclamation-circle me-1"></i>Soyad alanı zorunludur
+                    </div>
+                    <div *ngIf="f['last_name'].errors['maxlength']">
+                      <i class="bi bi-exclamation-circle me-1"></i>Soyad 45 karakterden uzun olamaz
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Section -->
+          <div class="form-group" *ngIf="actorForm.get('first_name')?.value || actorForm.get('last_name')?.value">
+            <label class="form-label">
+              <i class="bi bi-eye me-2"></i>Önizleme
+            </label>
+            <div class="preview-card">
+              <div class="d-flex align-items-center">
+                <div class="avatar-preview me-3">
+                  {{ (actorForm.get('first_name')?.value || 'A').charAt(0).toUpperCase() }}{{ (actorForm.get('last_name')?.value || 'A').charAt(0).toUpperCase() }}
+                </div>
+                <div>
+                  <h6 class="mb-0 text-primary">
+                    {{ actorForm.get('first_name')?.value || 'Ad' }} {{ actorForm.get('last_name')?.value || 'Soyad' }}
+                  </h6>
+                  <small class="text-muted">
+                    <i class="bi bi-person-badge me-1"></i>Aktör
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons d-flex gap-3 justify-content-end">
+            <button type="button" class="btn btn-secondary-custom" [routerLink]="['/actors']" [disabled]="loading">
+              <i class="bi bi-x-circle me-2"></i>İptal
+            </button>
+            <button type="submit" class="btn btn-primary-custom" [disabled]="loading || actorForm.invalid">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+              <i *ngIf="!loading" [class]="isEditMode ? 'bi bi-check-circle me-2' : 'bi bi-plus-circle me-2'"></i>
+              {{ isEditMode ? 'Güncelle' : 'Kaydet' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

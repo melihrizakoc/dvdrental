@@ -1,0 +1,233 @@
+<div class="home-container fade-in-up">
+  <!-- Modern Hero Section -->
+  <div class="hero-section text-center">
+    <div class="container">
+      <div class="hero-content">
+        <!-- Large Retro Cinema Projector Logo -->
+        <div class="hero-logo mb-4">
+          <svg width="140" height="112" viewBox="0 0 140 112" class="hero-logo-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="heroProjectorBody" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#ff9a9e;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#fecfef;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#fbd3e9;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="heroLensGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#fed6e3;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#d299c2;stop-opacity:1" />
+              </linearGradient>
+              <radialGradient id="heroLightRay" cx="100%" cy="50%" r="80%">
+                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+                <stop offset="50%" style="stop-color:#ffd700;stop-opacity:0.4" />
+                <stop offset="100%" style="stop-color:#ffb347;stop-opacity:0.1" />
+              </radialGradient>
+              <linearGradient id="heroReelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
+              </linearGradient>
+              <filter id="heroProjectorShadow">
+                <feDropShadow dx="6" dy="10" stdDeviation="8" flood-opacity="0.4" />
+              </filter>
+              <filter id="heroGlow">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- Projector Body -->
+            <rect x="14" y="35" width="70" height="42" rx="10" fill="url(#heroProjectorBody)" filter="url(#heroProjectorShadow)" class="projector-body" />
+
+            <!-- Lens -->
+            <circle cx="98" cy="56" r="21" fill="url(#heroLensGradient)" filter="url(#heroGlow)" class="projector-lens" />
+            <circle cx="98" cy="56" r="16" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.8" />
+            <circle cx="98" cy="56" r="10" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+            <circle cx="98" cy="56" r="6" fill="#ffffff" opacity="0.9" />
+
+            <!-- Film Reels -->
+            <circle cx="35" cy="21" r="14" fill="url(#heroReelGradient)" class="film-reel-1" />
+            <circle cx="35" cy="21" r="10" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.7" />
+            <circle cx="35" cy="21" r="4" fill="#ffffff" opacity="0.8" />
+
+            <circle cx="63" cy="21" r="14" fill="url(#heroReelGradient)" class="film-reel-2" />
+            <circle cx="63" cy="21" r="10" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.7" />
+            <circle cx="63" cy="21" r="4" fill="#ffffff" opacity="0.8" />
+
+            <!-- Light Beam -->
+            <polygon points="119,56 84,42 84,70" fill="url(#heroLightRay)" opacity="0.7" class="light-beam" />
+
+            <!-- Film Strip -->
+            <rect x="21" y="91" width="56" height="10" rx="2" fill="url(#heroReelGradient)" />
+            <rect x="24" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="29" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="34" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="39" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="44" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="49" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="54" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="59" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="64" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+            <rect x="69" y="93" width="3" height="6" rx="1" fill="#ffffff" opacity="0.7" />
+
+            <!-- Decorative Stars and Sparkles -->
+            <g class="sparkles">
+              <circle cx="126" cy="28" r="3" fill="#ffd700" opacity="0.9" />
+              <circle cx="133" cy="84" r="2.5" fill="#ff6b6b" opacity="0.8" />
+              <circle cx="7" cy="98" r="2" fill="#4ecdc4" opacity="0.7" />
+              <circle cx="10" cy="14" r="1.5" fill="#45b7d1" opacity="0.8" />
+
+              <!-- Star shapes -->
+              <polygon points="120,10 122,16 128,16 123,20 125,26 120,22 115,26 117,20 112,16 118,16" fill="#ffd700" opacity="0.8" />
+              <polygon points="15,35 17,41 23,41 18,45 20,51 15,47 10,51 12,45 7,41 13,41" fill="#ff9a9e" opacity="0.7" />
+            </g>
+
+            <!-- Tech Lines -->
+            <g class="tech-lines" opacity="0.5">
+              <line x1="0" y1="56" x2="14" y2="56" stroke="#ffffff" stroke-width="2" />
+              <line x1="126" y1="56" x2="140" y2="56" stroke="#ffffff" stroke-width="2" />
+              <line x1="70" y1="0" x2="70" y2="14" stroke="#ffffff" stroke-width="2" />
+              <line x1="70" y1="98" x2="70" y2="112" stroke="#ffffff" stroke-width="2" />
+            </g>
+          </svg>
+        </div>
+
+        <h1 class="display-3 mb-3 hero-title">{{ title }}</h1>
+        <p class="lead hero-subtitle mb-4">{{ subtitle }}</p>
+        <p class="hero-description">Film, aktör ve kategori yönetim sisteminize hoş geldiniz.</p>
+        <div class="hero-stats mt-5">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="stat-item">
+                <div class="stat-number" *ngIf="!loading">{{ filmCount }}+</div>
+                <div class="stat-number" *ngIf="loading">
+                  <div class="spinner-border spinner-border-sm text-primary" role="status">
+                    <span class="visually-hidden">Yükleniyor...</span>
+                  </div>
+                </div>
+                <div class="stat-label">Film</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stat-item">
+                <div class="stat-number" *ngIf="!loading">{{ actorCount }}+</div>
+                <div class="stat-number" *ngIf="loading">
+                  <div class="spinner-border spinner-border-sm text-success" role="status">
+                    <span class="visually-hidden">Yükleniyor...</span>
+                  </div>
+                </div>
+                <div class="stat-label">Aktör</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stat-item">
+                <div class="stat-number" *ngIf="!loading">{{ categoryCount }}</div>
+                <div class="stat-number" *ngIf="loading">
+                  <div class="spinner-border spinner-border-sm text-warning" role="status">
+                    <span class="visually-hidden">Yükleniyor...</span>
+                  </div>
+                </div>
+                <div class="stat-label">Kategori</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modern Quick Navigation Cards -->
+  <div class="container navigation-section">
+    <div class="section-header text-center mb-5">
+      <h2 class="section-title">
+        <i class="bi bi-compass me-3"></i>Hızlı Erişim
+      </h2>
+      <p class="section-description">Sisteminizi kolayca yönetin</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let card of statisticsCards; let i = index">
+        <div class="modern-card h-100" [routerLink]="card.route" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 100">
+          <div class="card-background"></div>
+          <div class="card-content">
+            <div class="card-icon mb-4">
+              <i [class]="'bi ' + card.icon"></i>
+            </div>
+            <h5 class="card-title mb-3">{{ card.title }}</h5>
+            <p class="card-description mb-4">{{ card.title }} yönetim sayfasına gidin</p>
+
+            <!-- Gerçek sayıları göster -->
+            <div class="card-stats mb-3">
+              <span class="stats-badge" [ngClass]="'badge-' + card.color">
+                <span *ngIf="!loading">
+                  <ng-container [ngSwitch]="card.title">
+                    <span *ngSwitchCase="'Filmler'">{{ filmCount }} adet</span>
+                    <span *ngSwitchCase="'Aktörler'">{{ actorCount }} adet</span>
+                    <span *ngSwitchCase="'Kategoriler'">{{ categoryCount }} adet</span>
+                  </ng-container>
+                </span>
+                <span *ngIf="loading">
+                  <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Yükleniyor...</span>
+                  </div>
+                </span>
+              </span>
+            </div>
+
+            <div class="card-action">
+              <span class="action-text">Yönet</span>
+              <i class="bi bi-arrow-right-circle action-icon"></i>
+            </div>
+          </div>
+          <div class="card-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modern Features Section -->
+  <div class="features-section">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="section-title">
+          <i class="bi bi-stars me-3"></i>Platform Özellikleri
+        </h2>
+        <p class="section-description">Modern ve kullanıcı dostu arayüz</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-item text-center">
+            <div class="feature-icon">
+              <i class="bi bi-lightning-charge"></i>
+            </div>
+            <h5 class="feature-title">Hızlı Performans</h5>
+            <p class="feature-description">Optimize edilmiş altyapı ile hızlı yanıt süreleri</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-item text-center">
+            <div class="feature-icon">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h5 class="feature-title">Güvenli Yapı</h5>
+            <p class="feature-description">Gelişmiş güvenlik önlemleri ile verileriniz korunuyor</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-item text-center">
+            <div class="feature-icon">
+              <i class="bi bi-phone"></i>
+            </div>
+            <h5 class="feature-title">Mobil Uyumlu</h5>
+            <p class="feature-description">Her cihazda mükemmel görüntü ve kullanım deneyimi</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

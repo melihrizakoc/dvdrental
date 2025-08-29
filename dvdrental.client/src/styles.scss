@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+// MDB SCSS
+@use 'mdb-angular-ui-kit/assets/scss/mdb' as mdb;
+
+// Font Awesome
+@use '@fortawesome/fontawesome-free/scss/fontawesome' as fontawesome;
+@use '@fortawesome/fontawesome-free/scss/solid' as solid;
+@use '@fortawesome/fontawesome-free/scss/regular' as regular;
+@use '@fortawesome/fontawesome-free/scss/brands' as brands;
+
+// Roboto font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');

@@ -1,0 +1,1 @@
+C:\Users\melih.koc\Projects\Angular-Dotnet\DvdRental\dvdrental.client\obj\Debug\dvdrental.client.esproj.CoreCompileInputs.cache
