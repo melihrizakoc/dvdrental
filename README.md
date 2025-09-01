@@ -24,5 +24,5 @@ npm install
 ng serve
 ```
 
-Hazırlayan: Melih Rıza Koç
+Hazırlayan: Melih Rıza Koç /n
 Mentor: Mustafa Tütüncü
